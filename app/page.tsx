@@ -2,6 +2,7 @@
 import { AppShell } from "@/components/layout/app-shell";
 import { RegisterSwitcher } from "@/components/vat-register/register-switcher";
 import { SummaryCards } from "@/components/vat-register/summary-cards";
+import { VatBreakdown } from "@/components/vat-register/vat-breakdown";
 
 export default function Home() {
   return (
@@ -21,6 +22,10 @@ export default function Home() {
 
         <div className="mt-6">
           <SummaryCards />
+        </div>
+
+        <div className="mt-6">
+          <VatBreakdown />
         </div>
       </section>
     </AppShell>
