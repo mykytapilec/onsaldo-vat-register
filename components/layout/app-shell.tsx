@@ -1,6 +1,7 @@
 
 import type { ReactNode } from "react";
 
+import { MobileNavigation } from "./mobile-navigation";
 import { Sidebar } from "./sidebar";
 import { Topbar } from "./topbar";
 
@@ -18,9 +19,11 @@ export function AppShell({ children }: AppShellProps) {
       <div className="flex min-w-0 flex-1 flex-col">
         <Topbar />
 
-        <main className="flex-1 p-4 md:p-6">
+        <main className="flex-1 p-4 pb-24 md:p-6">
           {children}
         </main>
+
+        <MobileNavigation />
       </div>
     </div>
   );
