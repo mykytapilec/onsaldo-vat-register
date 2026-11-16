@@ -3,7 +3,8 @@
 
 import { useMemo, useState } from "react";
 import { documents } from "./documents-data";
-// import { documents } from "@/components/vat-register/documents-data";
+import type { Document } from "./documents-data";
+import { DocumentDetailsModal } from "./document-details-modal";
 
 type DocumentsTableProps = {
   searchQuery: string;
@@ -19,6 +20,8 @@ export function DocumentsTable({
   month,
 }: DocumentsTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedDocument, setSelectedDocument] =
+    useState<Document | null>(null);
 
   const filteredDocuments = useMemo(() => {
     return documents.filter((document) => {
@@ -69,12 +72,14 @@ export function DocumentsTable({
                 <th className="px-4 py-3 font-medium">ID dokumentu</th>
               </tr>
             </thead>
+
             <tbody className="divide-y divide-[var(--border)]">
               {paginatedDocuments.length > 0 ? (
                 paginatedDocuments.map((document) => (
                   <tr
                     key={document.id}
-                    className="text-[var(--text-primary)]"
+                    onClick={() => setSelectedDocument(document)}
+                    className="cursor-pointer text-[var(--text-primary)] transition-colors hover:bg-[var(--surface-muted)]"
                   >
                     <td className="whitespace-nowrap px-4 py-3">
                       {document.contractor}
@@ -129,9 +134,11 @@ export function DocumentsTable({
             >
               Poprzednia
             </button>
+
             <span>
               {safeCurrentPage} / {totalPages}
             </span>
+
             <button
               type="button"
               onClick={() =>
@@ -145,6 +152,11 @@ export function DocumentsTable({
           </div>
         </div>
       </div>
+
+      <DocumentDetailsModal
+        selectedDocument={selectedDocument}
+        onClose={() => setSelectedDocument(null)}
+      />
     </section>
   );
 }
