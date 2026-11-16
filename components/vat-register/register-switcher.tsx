@@ -1,14 +1,17 @@
 
 "use client";
 
-import { useState } from "react";
+export type RegisterType = "sales" | "purchases";
 
-type RegisterType = "sales" | "purchases";
+type RegisterSwitcherProps = {
+  activeRegister: RegisterType;
+  onRegisterChange: (register: RegisterType) => void;
+};
 
-export function RegisterSwitcher() {
-  const [activeRegister, setActiveRegister] =
-    useState<RegisterType>("sales");
-
+export function RegisterSwitcher({
+  activeRegister,
+  onRegisterChange,
+}: RegisterSwitcherProps) {
   return (
     <div
       role="group"
@@ -18,7 +21,7 @@ export function RegisterSwitcher() {
       <button
         type="button"
         aria-pressed={activeRegister === "sales"}
-        onClick={() => setActiveRegister("sales")}
+        onClick={() => onRegisterChange("sales")}
         className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
           activeRegister === "sales"
             ? "bg-[var(--primary)] text-white shadow-sm"
@@ -31,7 +34,7 @@ export function RegisterSwitcher() {
       <button
         type="button"
         aria-pressed={activeRegister === "purchases"}
-        onClick={() => setActiveRegister("purchases")}
+        onClick={() => onRegisterChange("purchases")}
         className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${
           activeRegister === "purchases"
             ? "bg-[var(--primary)] text-white shadow-sm"
