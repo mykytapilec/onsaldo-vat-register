@@ -1,7 +1,17 @@
+
+import { AppShell } from "@/components/layout/app-shell";
+
 export default function Home() {
   return (
-    <main>
-      <h1>Rejestry VAT</h1>
-    </main>
+    <AppShell>
+      <section>
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Rejestry VAT
+        </h2>
+        <p className="mt-2 text-sm text-[var(--foreground-secondary)]">
+          Zarządzaj rejestrami sprzedaży i zakupów.
+        </p>
+      </section>
+    </AppShell>
   );
 }
