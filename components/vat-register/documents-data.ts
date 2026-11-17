@@ -5,9 +5,13 @@ export type Document = {
   number: string;
   ksef: string;
   id: string;
+  operation: "Faktura" | "Korekta";
+  jpk: "Nie przypisano";
 };
 
-export const documents: Document[] = [
+type RawDocument = Omit<Document, "operation" | "jpk">;
+
+const rawDocuments: RawDocument[] = [
   {
     contractor: "Demo Alfa 01",
     date: "2026-10-01",
@@ -177,3 +181,9 @@ export const documents: Document[] = [
     id: "DEMO-S-24",
   },
 ];
+
+export const documents: Document[] = rawDocuments.map((document) => ({
+  ...document,
+  operation: document.number.startsWith("KOR/") ? "Korekta" : "Faktura",
+  jpk: "Nie przypisano",
+}));

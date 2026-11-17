@@ -58,6 +58,14 @@ const availableMonths = Array.from(
   new Set(documents.map((document) => document.date.slice(5, 7))),
 ).sort((a, b) => Number(a) - Number(b));
 
+const availableOperations = Array.from(
+  new Set(documents.map((document) => document.operation)),
+);
+
+const availableJpkCodes = Array.from(
+  new Set(documents.map((document) => document.jpk)),
+);
+
 export function RegisterFilters({
   filters,
   onFiltersChange,
@@ -158,10 +166,17 @@ export function RegisterFilters({
             <select
               id="register-operation"
               value={filters.operation}
-              onChange={(event) => updateFilter("operation", event.target.value)}
+              onChange={(event) =>
+                updateFilter("operation", event.target.value)
+              }
               className={selectClassName}
             >
               <option value="Wszystkie">Wszystkie</option>
+              {availableOperations.map((operation) => (
+                <option key={operation} value={operation}>
+                  {operation}
+                </option>
+              ))}
             </select>
             <ChevronDown className={chevronClassName} />
           </div>
@@ -182,6 +197,11 @@ export function RegisterFilters({
               className={selectClassName}
             >
               <option value="Wszystkie">Wszystkie</option>
+              {availableJpkCodes.map((jpk) => (
+                <option key={jpk} value={jpk}>
+                  {jpk}
+                </option>
+              ))}
             </select>
             <ChevronDown className={chevronClassName} />
           </div>

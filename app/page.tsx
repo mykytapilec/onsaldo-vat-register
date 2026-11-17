@@ -82,6 +82,8 @@ export default function Home() {
                     searchQuery={filters.search}
                     year={filters.year}
                     month={filters.month}
+                    operation={filters.operation}
+                    jpk={filters.jpk}
                   />
                 </div>
               </>

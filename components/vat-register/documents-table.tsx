@@ -10,6 +10,8 @@ type DocumentsTableProps = {
   searchQuery: string;
   year: string;
   month: string;
+  operation: string;
+  jpk: string;
 };
 
 const pageSize = 10;
@@ -18,6 +20,8 @@ export function DocumentsTable({
   searchQuery,
   year,
   month,
+  operation,
+  jpk,
 }: DocumentsTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedDocument, setSelectedDocument] =
@@ -43,9 +47,23 @@ export function DocumentsTable({
         month === "Wszystkie" ||
         (documentDate.getMonth() + 1).toString().padStart(2, "0") === month;
 
-      return matchesSearch && matchesYear && matchesMonth;
+      const matchesOperation =
+        !operation ||
+        operation === "Wszystkie" ||
+        document.operation === operation;
+
+      const matchesJpk =
+        !jpk || jpk === "Wszystkie" || document.jpk === jpk;
+
+      return (
+        matchesSearch &&
+        matchesYear &&
+        matchesMonth &&
+        matchesOperation &&
+        matchesJpk
+      );
     });
-  }, [searchQuery, year, month]);
+  }, [searchQuery, year, month, operation, jpk]);
 
   const totalPages = Math.max(
     1,
