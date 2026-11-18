@@ -91,9 +91,9 @@ export function DocumentsTable({
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-[var(--border)]">
-              {paginatedDocuments.length > 0 ? (
-                paginatedDocuments.map((document) => (
+            {paginatedDocuments.length > 0 && (
+              <tbody className="divide-y divide-[var(--border)]">
+                {paginatedDocuments.map((document) => (
                   <tr
                     key={document.id}
                     onClick={() => setSelectedDocument(document)}
@@ -117,20 +117,17 @@ export function DocumentsTable({
                       {document.id}
                     </td>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td
-                    colSpan={5}
-                    className="px-4 py-10 text-center text-[var(--text-secondary)]"
-                  >
-                    Brak dokumentów spełniających wybrane kryteria.
-                  </td>
-                </tr>
-              )}
-            </tbody>
+                ))}
+              </tbody>
+            )}
           </table>
         </div>
+
+        {paginatedDocuments.length === 0 && (
+          <div className="px-4 py-10 text-center text-sm text-[var(--text-secondary)]">
+            Brak dokumentów spełniających wybrane kryteria.
+          </div>
+        )}
 
         <div className="flex flex-col gap-3 border-t border-[var(--border)] px-4 py-3 text-sm text-[var(--text-secondary)] sm:flex-row sm:items-center sm:justify-between">
           <p>
