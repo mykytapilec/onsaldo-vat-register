@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Onsaldo VAT Register
+
+A responsive VAT register dashboard built with **Next.js, React, and TypeScript**. This project is a frontend implementation of an accounting dashboard concept, focused on usability, responsive layouts, and a clean component-based architecture.
+
+## Features
+
+- **VAT Register Dashboard** — sales and purchase register navigation.
+- **Financial Summary** — overview cards for Net, VAT, and Gross amounts.
+- **VAT Breakdown** — VAT rate summary.
+- **Document Management** — responsive documents table with horizontal scrolling on mobile.
+- **Search and Filters** — filter documents by year, month, operation type, and JPK V7 code.
+- **Pagination** — navigate through document records.
+- **Document Details** — modal with detailed information about a selected document.
+- **Demo States** — switch between Filled, Empty, and Error states.
+- **Light and Dark Themes** — theme preference is saved in local storage.
+- **Responsive Design** — layouts adapted for desktop and mobile screens.
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Library:** React
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4, CSS custom properties
+- **Linting:** ESLint
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/mykytapilec/onsaldo-vat-register.git
+cd onsaldo-vat-register
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+### Development
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Demo Data
 
-To learn more about Next.js, take a look at the following resources:
+The application currently uses local demonstration data. No external accounting services or backend integrations are required.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The demo toolbar allows switching between:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Filled** — displays document records and financial summaries.
+- **Empty** — displays the empty state.
+- **Error** — displays an error state.
 
-## Deploy on Vercel
+The purchase register is currently represented by a placeholder.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Responsive Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The interface is designed for desktop and mobile screens.
+
+- Desktop uses a sidebar navigation and a full-width documents table.
+- Mobile uses bottom navigation and a horizontally scrollable documents table.
+- Document details are displayed in a modal.
+- Light and dark themes are supported across the interface.
+
+## Project Structure
+
+```text
+app/
+  globals.css
+  layout.tsx
+  page.tsx
+
+components/
+  layout/
+    app-shell.tsx
+    mobile-navigation.tsx
+    sidebar.tsx
+    theme-toggle.tsx
+    topbar.tsx
+  vat-register/
+    demo-states-toolbar.tsx
+    document-details-modal.tsx
+    documents-data.ts
+    documents-table.tsx
+    register-filters.tsx
+    register-switcher.tsx
+    summary-cards.tsx
+    vat-breakdown.tsx
+```
+
+## Repository
+
+[GitHub — Onsaldo VAT Register](https://github.com/mykytapilec/onsaldo-vat-register)
+
+## License
+
+This project was created as a demonstration project for recruitment purposes.
