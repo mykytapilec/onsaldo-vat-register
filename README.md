@@ -2,6 +2,12 @@
 
 A responsive VAT register dashboard built with **Next.js, React, and TypeScript**. This project is a frontend implementation of an accounting dashboard concept, focused on usability, responsive layouts, and a clean component-based architecture.
 
+## Live Demo
+
+**[Open Onsaldo VAT Register](https://onsaldo-vat-register.vercel.app)**
+
+**[View GitHub Repository](https://github.com/mykytapilec/onsaldo-vat-register)**
+
 ## Features
 
 - **VAT Register Dashboard** — sales and purchase register navigation.
@@ -110,10 +116,6 @@ components/
     summary-cards.tsx
     vat-breakdown.tsx
 ```
-
-## Repository
-
-[GitHub — Onsaldo VAT Register](https://github.com/mykytapilec/onsaldo-vat-register)
 
 ## License
 
